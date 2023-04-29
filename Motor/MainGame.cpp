@@ -8,6 +8,7 @@ MainGame::MainGame() {
 	width = 800;
 	height = 600;
 	gameState = GameState::PLAY;
+	time = 0;
 }
 
 MainGame::~MainGame() {
@@ -28,6 +29,14 @@ void MainGame::processInput() {
 	}
 }
 
+void MainGame::initShaders()
+{
+	program.compileShaders("Shaders/colorShaderVert.txt", "Shaders/colorShaderFrag.txt");
+	program.addAtribute("vertexPosition");
+	program.addAtribute("vertexColor");
+	program.linkShader();
+}
+
 void MainGame::init() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("Hola", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
@@ -43,13 +52,18 @@ void MainGame::init() {
 	}
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	
+	initShaders();
 }
 
 void MainGame::draw() {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	program.use();
+	GLuint timeLocation = program.getUniformLocation("time");
+	glUniform1f(timeLocation, time);
+	time += 0.002;
 	sprite.draw();
+	program.unuse();
 	//si tengo elementos actualizo
 	SDL_GL_SwapWindow(window);
 }
