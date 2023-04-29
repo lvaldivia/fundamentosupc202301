@@ -19,7 +19,7 @@ void HLSLProgram::addAtribute(const string attributeName) {
 
 void HLSLProgram::use() {
 	glUseProgram(programID);
-	for(int i = 0; i < numAtribute; (int i++)
+	for(int i = 0; i < numAtribute; i++)
 	{
 		glEnableVertexAttribArray(i);
 	}
@@ -27,7 +27,7 @@ void HLSLProgram::use() {
 
 void HLSLProgram::unuse() {
 	glUseProgram(0); 
-	for (int i = 0; i < numAtribute; (int i++)
+	for (int i = 0; i < numAtribute; i++)
 	{
 		glDisableVertexAttribArray(i);
 	}
