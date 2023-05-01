@@ -3,6 +3,7 @@
 #include <GL/eglew.h>
 #include "Sprite.h"
 #include "HLSLProgram.h"
+#include "Window.h"
 
 enum class GameState {
 	PLAY,EXIT
@@ -14,7 +15,7 @@ private:
 	int width;
 	int height;
 	float time;
-	SDL_Window* window;
+	Window window;
 	HLSLProgram program;
 	Sprite sprite;
 	void init();
