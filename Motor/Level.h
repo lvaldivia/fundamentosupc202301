@@ -13,6 +13,7 @@ private:
 	void parseLevel();
 	glm::vec2 playerPosition;
 	vector<glm::vec2> zombiesPosition;
+	SpriteBatch spriteBatch;
 public:
 	int getNumHumans()const {
 		return numHumans;
@@ -26,8 +27,14 @@ public:
 	vector<string> getLevelData() {
 		return levelData;
 	}
+	int getWidth()const {
+		return levelData[0].size();
+	}
+	int getHeight()const {
+		return levelData[0].size();
+	}
 	Level(const string& fileName);
 	void draw();
-	SpriteBatch spriteBatch;
+	~Level();
 };
 
