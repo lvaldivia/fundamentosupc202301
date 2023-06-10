@@ -38,7 +38,7 @@ void Level::parseLevel()
 			case 'R':
 			case 'B':
 				//por implementar
-				break;
+				break; 
 			case 'G':
 				//por implementar
 				break;

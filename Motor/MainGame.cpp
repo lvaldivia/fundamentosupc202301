@@ -84,6 +84,7 @@ void MainGame::draw() {
 	GLuint timeLocation = program.getUniformLocation("time");
 	glUniform1f(timeLocation, time);
 	time += 0.002;
+
 	glm::mat4 cameraMatrix = camera2D.getCameraMatrix();
 	GLuint pCameraLocation = program.getUniformLocation("pCamera");
 	glUniformMatrix4fv(pCameraLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
@@ -104,6 +105,7 @@ void MainGame::run() {
 void MainGame::update() {
 	while (gameState != GameState::EXIT) {
 		draw();
+		camera2D.update();
 		processInput();
 	}
 }

@@ -21,7 +21,7 @@ void Camera2D::update()
 	if (needsUpdateMatrix) {
 		glm::vec3 translate(-position.x + screenWidth / 2,
 			-position.y + screenHeight / 2, 0.0f);
-		cameraMatrix = glm::translate(orthoMatrix, translate);
+		//cameraMatrix = glm::translate(orthoMatrix, translate);
 		glm::vec3 scaleCamera(this->scale,this->scale,0.0f);
 		cameraMatrix = glm::scale(glm::mat4(1.0f), scaleCamera)
 						* cameraMatrix;

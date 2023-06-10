@@ -50,7 +50,7 @@ bool Agent::collideWithLevel(const vector<string>& levelData)
     }
     for (size_t i = 0; i < collideTilePosition.size(); i++)
     {
-        collideWithLevel(collideTilePosition[i]);
+        collideWithTile(collideTilePosition[i]);
     }
     return false;
 }
