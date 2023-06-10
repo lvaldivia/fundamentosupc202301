@@ -17,6 +17,10 @@ public:
 	glm::vec2 getPosition() {
 		return position;
 	}
+	glm::vec2 convertToScreenWorld(glm::vec2 screenScords);
+	float getScale() {
+		return scale;
+	}
 	void setPosition(const glm::vec2& newPosition) {
 		position = newPosition;
 		needsUpdateMatrix = true;

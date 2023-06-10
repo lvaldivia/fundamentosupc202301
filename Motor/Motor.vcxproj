@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="HLSLProgram.cpp" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="GLTexture.h" />
