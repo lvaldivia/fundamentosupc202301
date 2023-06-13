@@ -38,7 +38,7 @@ void Level::parseLevel()
 			case 'R':
 			case 'B':
 				spriteBatch.draw(destRect, uvRect,
-					ResourceManager::getTexture("Textures/glass.png").id, 
+					ResourceManager::getTexture("Textures/red_bricks.png").id, 
 						0.0f, color);
 				break; 
 			case 'G':
@@ -57,8 +57,12 @@ void Level::parseLevel()
 				playerPosition.y = y * TILE_WIDTH;
 				break;
 			case 'Z':
+				levelData[y][x] = '.';
+				zombiesPosition.emplace_back(x * TILE_WIDTH, y * TILE_WIDTH);
 				break;
 			case '.':
+				break;
+			default:
 				break;
 			}
 		}

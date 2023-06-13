@@ -25,11 +25,11 @@ void MainGame::processInput() {
 				gameState = GameState::EXIT;
 				break;
 			case SDL_MOUSEMOTION:
-				cout << "Posicion del mousec " << event.motion.x << " " << event.motion.y << endl;
+				//cout << "Posicion del mousec " << event.motion.x << " " << event.motion.y << endl;
 				inputManager.setMouseCoords(event.motion.x, event.motion.y);
 				glm::vec2 mouseCoords = camera2D.convertToScreenWorld(inputManager.getMouseCoords());
-				cout << "Nueva posicion de acuerdo a camara " <<  mouseCoords.x
-						<< " " << mouseCoords.y << endl;
+				//cout << "Nueva posicion de acuerdo a camara " <<  mouseCoords.x
+					//	<< " " << mouseCoords.y << endl;
 				break;
 			case SDL_KEYUP:
 				inputManager.releaseKey(event.key.keysym.sym);
@@ -60,15 +60,15 @@ void MainGame::handleInput()
 		camera2D.setScale(camera2D.getScale() - SCALE_SPEED);
 	}
 	if (inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
-		cout << "CLICK IZQUIERDO" << endl;
+		//cout << "CLICK IZQUIERDO" << endl;
 	}
 
 	if (inputManager.isKeyPressed(SDL_BUTTON_RIGHT)) {
-		cout << "CLICK DERECHo" << endl;
+		//cout << "CLICK DERECHo" << endl;
 	}
 
 	if (inputManager.isKeyPressed(SDL_BUTTON_MIDDLE)) {
-		cout << "CLICK CENTRO" << endl;
+		//cout << "CLICK CENTRO" << endl;
 	}
 }
 
@@ -88,8 +88,8 @@ void MainGame::init() {
 	if (error != GLEW_OK) {
 		fatalError("Glew not initialized");
 	}
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	
+	glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
 	initLevel();
 	initShaders();
 }
@@ -123,9 +123,6 @@ void MainGame::draw() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	program.use();
 	glActiveTexture(GL_TEXTURE0);
-	/*GLuint timeLocation = program.getUniformLocation("time");
-	glUniform1f(timeLocation, time);
-	time += 0.002;*/
 
 	glm::mat4 cameraMatrix = camera2D.getCameraMatrix();
 	GLuint pCameraLocation = program.getUniformLocation("pCamera");
@@ -153,6 +150,10 @@ void MainGame::run() {
 
 void MainGame::updateElements() {
 	player->update(levels[currentLevel]->getLevelData(), humans, zombies);
+	for (size_t i = 0; i < humans.size(); i++)
+	{
+		humans[i]->update(levels[currentLevel]->getLevelData(),humans,zombies);
+	}
 }
 
 void MainGame::update() {

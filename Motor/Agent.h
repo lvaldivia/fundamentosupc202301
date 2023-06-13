@@ -3,6 +3,7 @@
 #include "SpriteBatch.h"
 #include "GLTexture.h"
 #include <string>
+#include "Level.h"
 
 class Zombie;
 class Human;
