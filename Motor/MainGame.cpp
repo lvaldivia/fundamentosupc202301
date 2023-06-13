@@ -99,7 +99,7 @@ void MainGame::initLevel() {
 	currentLevel = 0;
 	//inicializar humans,player y zombie
 	player = new Player();
-	player->init(1.0f, levels[currentLevel]->getPlayerPosition(), &inputManager);
+	player->init(5.0f, levels[currentLevel]->getPlayerPosition(), &inputManager);
 	spriteBatch.init();
 
 	std::mt19937 randomEngine(time(nullptr));
@@ -114,6 +114,15 @@ void MainGame::initLevel() {
 		glm::vec2 pos(randPosX(randomEngine) * TILE_WIDTH,
 			randPosY(randomEngine) * TILE_WIDTH);
 		humans.back()->init(1.0f, pos);
+	}
+
+	const std::vector<glm::vec2>& zombiePosition =
+		levels[currentLevel]->getZombiesPosition();
+
+	for (size_t i = 0; i < zombiePosition.size(); i++)
+	{
+		zombies.push_back(new Zombie());
+		zombies.back()->init(1.3f, zombiePosition[i]);
 	}
 
 }

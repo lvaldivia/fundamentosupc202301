@@ -16,7 +16,7 @@ void Human::init(float speed, glm::vec2 position)
 	this->path = "Textures/circle.png";
 	this->speed = speed;
 	this->position = position;
-	color.set(0, 255,0, 255);
+	color.set(0, 0,255, 255);
 	static std::mt19937 randomEngine(time(nullptr));
 	static std::uniform_real_distribution<float>randDir(-1.0f, 1.0f);
 
