@@ -9,6 +9,7 @@
 #include "Level.h"
 #include "Player.h"
 #include "Human.h"
+#include "Bullet.h"
 #include "Zombie.h"
 #include "SpriteBatch.h"
 
@@ -23,6 +24,7 @@ private:
 	int height;
 	SpriteBatch spriteBatch;
 	vector<Level*> levels;
+	vector<Bullet*> bullets;
 	vector<Human*> humans;
 	vector<Zombie*> zombies;
 	Player* player;
@@ -38,6 +40,7 @@ private:
 	void initShaders();
 	void handleInput();
 	void updateElements();
+	void createBullet();
 public:
 	MainGame();
 	~MainGame();

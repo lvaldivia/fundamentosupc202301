@@ -19,8 +19,8 @@ void Bullet::draw(SpriteBatch& spritebatch)
     Color color;
     color.set(255, 255, 255, 255);
     glm::vec4 uv(0.0f,0.0f, 1.0f, 1.0f);
-    static GLTexture texture = ResourceManager::getTexture("Textures/mario.png");
-    glm::vec4 posAndSize = glm::vec4(position.x, position.y, 30, 30);
+    static GLTexture texture = ResourceManager::getTexture("Textures/Circle.png");
+    glm::vec4 posAndSize = glm::vec4(position.x, position.y, 15, 15);
     spritebatch.draw(posAndSize, uv, texture.id, 0.0f, color);
 }
 
