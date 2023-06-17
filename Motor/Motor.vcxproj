@@ -138,9 +138,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="App.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Error.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameplayScreen.cpp" />
     <ClCompile Include="HLSLProgram.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
@@ -161,9 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="App.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Error.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameplayScreen.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="HLSLProgram.h" />
     <ClInclude Include="Human.h" />
