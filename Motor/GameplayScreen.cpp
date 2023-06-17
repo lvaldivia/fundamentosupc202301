@@ -1,4 +1,5 @@
 #include "GameplayScreen.h"
+#include "Game.h"
 
 GameplayScreen::GameplayScreen(Window* window)
 {
@@ -11,6 +12,10 @@ GameplayScreen::~GameplayScreen()
 
 void GameplayScreen::checkInput()
 {
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) {
+		game->onSDLEvent(event);
+	}
 }
 
 
