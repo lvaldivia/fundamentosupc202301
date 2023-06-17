@@ -162,6 +162,10 @@ void MainGame::draw() {
 	{
 		bullets[i]->draw(spriteBatch);
 	}
+	for (size_t i = 0; i < zombies.size(); i++)
+	{
+		zombies[i]->draw(spriteBatch);
+	}
 	spriteBatch.end();
 	spriteBatch.renderBatch();
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -179,6 +183,20 @@ void MainGame::updateElements() {
 	for (size_t i = 0; i < humans.size(); i++)
 	{
 		humans[i]->update(levels[currentLevel]->getLevelData(),humans,zombies);
+	}
+	for (size_t i = 0; i < zombies.size(); i++) {
+		zombies[i]->update(levels[currentLevel]->getLevelData(), humans, zombies);
+
+		for (size_t j = 0; j < humans.size(); j++)
+		{
+			if (zombies[i]->collideWithAgent(humans[j])) {
+				zombies.push_back(new Zombie());
+				zombies.back()->init(1.3f, humans[j]->getPosition());
+				delete humans[j];
+				humans[j] = humans.back();
+				humans.pop_back();
+			}
+		}
 	}
 	for (size_t i = 0; i < bullets.size();)
 	{
