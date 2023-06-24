@@ -12,6 +12,7 @@
 #include "Bullet.h"
 #include "Zombie.h"
 #include "SpriteBatch.h"
+#include "SpriteFont.h"
 
 enum class GameState {
 	PLAY,EXIT
@@ -22,7 +23,9 @@ class MainGame
 private:
 	int width;
 	int height;
+	SpriteFont* spriteFont;
 	SpriteBatch spriteBatch;
+	SpriteBatch hudBatch;
 	vector<Level*> levels;
 	vector<Bullet*> bullets;
 	vector<Human*> humans;
@@ -48,6 +51,7 @@ public:
 	
 	void run();
 	void draw();
+	void drawHud();
 	void update();
 };
 

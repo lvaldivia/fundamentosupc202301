@@ -11,6 +11,10 @@ struct Position {
 };
 
 struct Color {
+	Color(GLubyte _r, GLubyte _g, GLubyte _b, GLubyte _a) {
+		set(_r, _g, _b, _a);
+	}
+	Color() : r(0), g(0), b(0), a(0) {}
 	GLubyte r;
 	GLubyte g;
 	GLubyte b;

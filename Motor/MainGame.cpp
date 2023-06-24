@@ -114,6 +114,7 @@ void MainGame::initLevel() {
 	player = new Player();
 	player->init(5.0f, levels[currentLevel]->getPlayerPosition(), &inputManager);
 	spriteBatch.init();
+	hudBatch.init();
 
 	std::mt19937 randomEngine(time(nullptr));
 	std::uniform_int_distribution<int>randPosX(
@@ -137,6 +138,7 @@ void MainGame::initLevel() {
 		zombies.push_back(new Zombie());
 		zombies.back()->init(1.3f, zombiePosition[i]);
 	}
+	spriteFont = new SpriteFont("Fonts/arial.ttf",64);
 
 }
 
@@ -168,9 +170,27 @@ void MainGame::draw() {
 	}
 	spriteBatch.end();
 	spriteBatch.renderBatch();
+	drawHud();
 	glBindTexture(GL_TEXTURE_2D, 0);
 	program.unuse();
 	window.swapWindow();
+}
+
+void MainGame::drawHud()
+{
+	glm::mat4 cameraMatrix = camera2D.getCameraMatrix();
+	GLuint pCameraLocation = program.getUniformLocation("pCamera");
+	glUniformMatrix4fv(pCameraLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+
+	char buffer[256];
+	hudBatch.begin();
+	sprintf_s(buffer, "HOLAAAAAAA");
+	Color color;
+	color.set(255, 255, 255, 255);
+	spriteFont->draw(hudBatch, buffer, glm::vec2(0, 0),
+		glm::vec2(0.5), 0.0f, Color(255,255,255,255));
+	hudBatch.end();
+	hudBatch.renderBatch();
 }
 
 void MainGame::run() {
